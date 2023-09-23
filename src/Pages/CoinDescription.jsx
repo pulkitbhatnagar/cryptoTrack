@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Container, Typography, Button } from '@mui/material';
 import { numberToComma } from '../utils/numberToAmountConversion';
-import ReactHtmlParser from 'react-html-parser';
+import parse from 'html-react-parser';
 import { doc, setDoc } from '@firebase/firestore';
 import { CryptoState } from '../CryptoContext';
 import { db } from '../Pages/Firebase';
@@ -109,7 +109,7 @@ const CoinDescription = ({
                         marginBottom: '10px',
                     }}
                 >
-                    {ReactHtmlParser(data?.description?.en.split('. ')[0])}.
+                    {parse(data?.description?.en.split('. ')[0]+"")}.
                 </Typography>
                 <Grid>
                     <Grid
