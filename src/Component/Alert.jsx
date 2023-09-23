@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Snackbar, Alert } from '@mui/material';
 import { CryptoState } from '../CryptoContext';
 const AlertShow = () => {
@@ -11,7 +11,7 @@ const AlertShow = () => {
             message: '',
         });
     }
-    console.log('=======', alert);
+  
     return (
         <div>
             <Snackbar

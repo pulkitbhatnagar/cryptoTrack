@@ -23,6 +23,7 @@ const CoinDescription = ({
         } else {
             setPresent(false);
         }
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [watchList]);
 
     async function addToWatchList() {

@@ -30,10 +30,12 @@ const CoinPage = () => {
 
     useEffect(() => {
         setIsLoading(false);
+
     }, [data]);
 
     useEffect(() => {
         coinDescription();
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

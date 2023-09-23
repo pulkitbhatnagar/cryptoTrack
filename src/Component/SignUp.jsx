@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Box, Button, TextField } from '@mui/material';
+import {   Box, Button, TextField } from '@mui/material';
 import { CryptoState } from '../CryptoContext';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Pages/Firebase';
@@ -12,7 +12,7 @@ const SignUp = ({ handleCloseModal }) => {
     const { setAlert } = CryptoState();
 
     async function handleSave() {
-        if (password != confirm) {
+        if (password !== confirm) {
             setAlert({
                 open: true,
                 severity: 'error',
@@ -21,7 +21,7 @@ const SignUp = ({ handleCloseModal }) => {
             return;
         }
         try {
-            const result = await createUserWithEmailAndPassword(
+             await createUserWithEmailAndPassword(
                 auth,
                 email,
                 password

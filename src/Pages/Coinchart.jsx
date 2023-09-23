@@ -27,6 +27,7 @@ const Coinchart = ({ id }) => {
 
     useEffect(() => {
         getHistoricalData();
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [days, currency]);
 
     function handledateChange(event) {

@@ -9,7 +9,7 @@ const Login = ({ handleCloseModal }) => {
     const [password, setPassword] = useState('');
     const { setAlert } = CryptoState();
     async function loginHandle() {
-        if (email == '' || password == '') {
+        if (email === '' || password === '') {
             setAlert({
                 open: true,
                 severity: 'error',
@@ -18,7 +18,7 @@ const Login = ({ handleCloseModal }) => {
             return;
         }
         try {
-            const result = await signInWithEmailAndPassword(
+            await signInWithEmailAndPassword(
                 auth,
                 email,
                 password

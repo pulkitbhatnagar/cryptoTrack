@@ -206,6 +206,9 @@ export default function UserDrawer({ openDrawer, handleDrawer }) {
                                         </Grid>
                                     );
                                 }
+                                else{
+                                    return <Typography variant="h4">No Result Found</Typography>
+                                }
                             })}
                         </Box>
                         <Button

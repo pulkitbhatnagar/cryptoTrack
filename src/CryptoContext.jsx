@@ -36,6 +36,7 @@ const CryptoContext = ({ children }) => {
 
     useEffect(() => {
         fetchCoins();
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -44,7 +45,7 @@ const CryptoContext = ({ children }) => {
 
             var unsubscribe = onSnapshot(coinRef, (coin) => {
                 if (coin.exists()) {
-                    console.log('====clist of couns', coin.data().coins);
+                    
                     setWatchList(coin.data().coins);
                 } else {
                     console.log('no coin presennt');
@@ -67,7 +68,7 @@ const CryptoContext = ({ children }) => {
     }, []);
 
     useEffect(() => {
-        if (currency == 'INR') {
+        if (currency === 'INR') {
             setSymbol('₹');
         } else {
             setSymbol('$');

@@ -10,7 +10,6 @@ import { numberToComma } from '../utils/numberToAmountConversion';
 import { Typography, Grid, CircularProgress } from '@mui/material';
 const Carosal = () => {
     let { currency, symbol } = CryptoState();
-    console.log(symbol);
     let [coinData, setCoinData] = useState([]);
     let [loading, setLoading] = useState(false);
 
@@ -29,7 +28,8 @@ const Carosal = () => {
 
     useEffect(() => {
         fetchCrypto();
-    }, []);
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currency]);
 
     const items = coinData.map((coin) => {
         return (
