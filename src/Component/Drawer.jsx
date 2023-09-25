@@ -20,6 +20,7 @@ export default function UserDrawer({ openDrawer, handleDrawer }) {
     const { user, setAlert, coins, watchList, symbol, setWatchList } =
         CryptoState();
     const [loading, setLoading] = useState(false);
+    const[listToDisplay,setListToDisplay]=useState([])
 
     async function logout() {
         await signOut(auth);
@@ -33,6 +34,13 @@ export default function UserDrawer({ openDrawer, handleDrawer }) {
 
         handleDrawer(false);
     }
+ 
+
+    React.useEffect(()=>{
+        setListToDisplay(coins.map((coin) => watchList.includes(coin.id)&&coin))
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[watchList])
+
 
     async function removeFromTheCart(coin) {
         const coinRef = doc(db, 'watchlist', user?.uid);
@@ -110,9 +118,10 @@ export default function UserDrawer({ openDrawer, handleDrawer }) {
                                 minHeight: '500px',
                                 backgroundColor: 'grey',
                                 width: '100%',
-                                overflowX: 'scroll',
+                                overflowY: 'scroll',
                                 maxHeight: '350px',
                                 mt: '20px',
+                                pb:0,
                             }}
                         >
                             <Typography
@@ -125,9 +134,11 @@ export default function UserDrawer({ openDrawer, handleDrawer }) {
                             >
                                 Your Coins
                             </Typography>
-                            {coins.map((coin) => {
-                                if (watchList.includes(coin.id)) {
-                                    return (
+                            
+                            {listToDisplay.map((coin) => {
+                                  
+                                     return (
+                                        coin&&(
                                         <Grid
                                             sx={{
                                                 p: '10px',
@@ -204,12 +215,10 @@ export default function UserDrawer({ openDrawer, handleDrawer }) {
                                                 </Button>
                                             </Grid>
                                         </Grid>
-                                    );
-                                }
-                                else{
-                                    return <Typography variant="h4">No Result Found</Typography>
-                                }
+                                       
+                                    ))           
                             })}
+                          
                         </Box>
                         <Button
                             variant="contained"
